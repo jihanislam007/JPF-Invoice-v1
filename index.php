@@ -177,11 +177,12 @@
 
           // var table_raw = '<tr><th scope="row">1</th><td><input class="form-control" type="text" name="textProductname[]" required=""></td><td><input class="form-control" type="text" name="textQuantity[]" required=""></td><td><input class="form-control" type="text" name="textBag[]" required=""></td><td><input class="form-control" type="text" name="textPrice[]" required=""></td><td><input class="btn btn-danger" type="button" name="remove" id="remove" value="Remove"></td></tr>';
 
-
-          var table_raw = '<tr><th scope="row">1</th><td ><?php $query = "SELECT * FROM product ORDER BY id ASC"; $result = mysqli_query($conn,$query); ?> <select class="form-control" name="textProductname[]"> <option value="">Select Product Name ....</option> <?php  foreach($result as $rows){ echo '<option value="'.$rows['productname'].'">'.$rows['productname'].'</option>'; } ?> </select> </td> <td><input class="form-control" type="text" name="textQuantity[]" required=""></td> <td><input class="form-control" type="text" name="textBag[]" required=""></td> <td><input class="form-control" type="text" name="textPrice[]" required=""></td> <td><input class="btn btn-warning" type="button" name="add" id="add" value="ADD"></td> </tr>';
-
           var max = 6;
           var x = 1;
+
+          var table_raw = '<tr><th scope="row">x</th><td ><?php $query = "SELECT * FROM product ORDER BY id ASC"; $result = mysqli_query($conn,$query); ?> <select class="form-control" name="textProductname[]"> <option value="">Select Product Name ....</option> <?php  foreach($result as $rows){ echo '<option value="'.$rows['productname'].'">'.$rows['productname'].'</option>'; } ?> </select> </td> <td><input class="form-control" type="text" name="textQuantity[]" required=""></td> <td><input class="form-control" type="text" name="textBag[]" required=""></td> <td><input class="form-control" type="text" name="textPrice[]" required=""></td> <td><input class="btn btn-danger" type="button" name="add" id="remove" value="Remove"></td> </tr>';
+
+          
 
           $("#add").click(function(){
             //alert('ok');
