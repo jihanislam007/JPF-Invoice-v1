@@ -89,20 +89,26 @@
                       }
                       ?>
 
-                  
-                  
                   <!--End Php code deploy -->
+                  <!-- for dropdown data download -->      
+                  
                   <tbody>
                     <tr>
                       <th scope="row">1</th>
-                      <td >                         
+                      <td >
+                          <?php
+                          $query = "SELECT * FROM product ORDER BY id ASC";
+                          $result = mysqli_query($conn,$query);
+                          ?>                       
                           <select class="form-control" name="textProductname[]">
                             <option value="">Select Product Name ....</option>
-                            <option value="Meat More">Meat More</option>
-                            <option value="By pro 25kg">By pro 25kg</option>
-                          </select>
+                            <?php 
+                              foreach($result as $rows){
+                                echo '<option value="'.$rows['productname'].'">'.$rows['productname'].'</option>';
+                              }
+                            ?>
+                          </select>                          
                       </td>
-
                       <td><input class="form-control" type="text" name="textQuantity[]" required=""></td>
                       <td><input class="form-control" type="text" name="textBag[]" required=""></td>
                       <td><input class="form-control" type="text" name="textPrice[]" required=""></td>
@@ -172,7 +178,7 @@
           // var table_raw = '<tr><th scope="row">1</th><td><input class="form-control" type="text" name="textProductname[]" required=""></td><td><input class="form-control" type="text" name="textQuantity[]" required=""></td><td><input class="form-control" type="text" name="textBag[]" required=""></td><td><input class="form-control" type="text" name="textPrice[]" required=""></td><td><input class="btn btn-danger" type="button" name="remove" id="remove" value="Remove"></td></tr>';
 
 
-          var table_raw = '<tr><th scope="row">1</th><td ><select class="form-control" name="textProductname[]"><option value="">Select Product Name ....</option><option value="Meat More">Meat More</option><option value="By pro 25kg">By pro 25kg</option></select></td><td><input class="form-control" type="text" name="textQuantity[]" required=""></td><td><input class="form-control" type="text" name="textBag[]" required=""></td><td><input class="form-control" type="text" name="textPrice[]" required=""></td><td><input class="btn btn-warning" type="button" name="add" id="add" value="ADD"></td></tr>';
+          var table_raw = '<tr><th scope="row">1</th><td ><?php $query = "SELECT * FROM product ORDER BY id ASC"; $result = mysqli_query($conn,$query); ?> <select class="form-control" name="textProductname[]"> <option value="">Select Product Name ....</option> <?php  foreach($result as $rows){ echo '<option value="'.$rows['productname'].'">'.$rows['productname'].'</option>'; } ?> </select> </td> <td><input class="form-control" type="text" name="textQuantity[]" required=""></td> <td><input class="form-control" type="text" name="textBag[]" required=""></td> <td><input class="form-control" type="text" name="textPrice[]" required=""></td> <td><input class="btn btn-warning" type="button" name="add" id="add" value="ADD"></td> </tr>';
 
           var max = 6;
           var x = 1;
@@ -199,3 +205,5 @@
 <!-- tutorial link -->
 <!-- https://www.youtube.com/watch?v=7efeIJ7oFTc&ab_channel=ShajedulIslamShawon -->
 <!--dropdown----------- https://www.youtube.com/watch?v=XVRA4XyN-m0 -->
+<!--dropdown----------- https://www.youtube.com/watch?v=L1UFTbfKeF4 -->
+<!-- https://www.youtube.com/watch?v=qgb_XqfwAec -->
